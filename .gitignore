@@ -1,3 +1,6 @@
 export/
 data/
 game3/scripts/level1.gd
+game3/logs
+logs
+game3/TestClass.cs

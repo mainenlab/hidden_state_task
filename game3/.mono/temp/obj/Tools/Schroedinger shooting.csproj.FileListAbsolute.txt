@@ -1,0 +1,6 @@
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/bin/Tools/Schroedinger shooting.dll
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/bin/Tools/Schroedinger shooting.pdb
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/obj/Tools/Schroedinger shooting.csprojResolveAssemblyReference.cache
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/obj/Tools/Schroedinger shooting.csproj.CoreCompileInputs.cache
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/obj/Tools/Schroedinger shooting.dll
+/Users/pietro/Projects/hidden_state_task/game3/.mono/temp/obj/Tools/Schroedinger shooting.pdb
