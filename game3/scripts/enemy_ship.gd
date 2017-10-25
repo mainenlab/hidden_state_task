@@ -163,7 +163,7 @@ func explode(steps):
 
 func game_over():
 	if has_data:
-		get_node("/root/game").send_string(query_string.substr(0, query_string.length( )-2)+";")
+		get_node("/root/game").SendString(query_string.substr(0, query_string.length( )-2)+";")
 	save_data()
 	get_tree().quit()
 
