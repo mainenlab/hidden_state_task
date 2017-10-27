@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/ship.gd" type="Script" id=1]
 [ext_resource path="res://resources/shipshader.tres" type="Shader" id=2]
@@ -19,8 +19,54 @@
 [ext_resource path="res://scripts/shadow.gd" type="Script" id=17]
 [ext_resource path="res://icon.png" type="Texture" id=18]
 [ext_resource path="res://scripts/joystick.gd" type="Script" id=19]
+[ext_resource path="res://assets/Images/player_laser/1_player_laser.png" type="Texture" id=20]
+[ext_resource path="res://assets/Images/player_laser/2_player_laser.png" type="Texture" id=21]
+[ext_resource path="res://assets/Images/player_laser/3_player_laser.png" type="Texture" id=22]
+[ext_resource path="res://assets/Images/player_laser/4_player_laser.png" type="Texture" id=23]
+[ext_resource path="res://assets/Images/player_laser/5_player_laser.png" type="Texture" id=24]
+[ext_resource path="res://assets/Images/player_laser/6_player_laser.png" type="Texture" id=25]
+[ext_resource path="res://assets/Images/player_laser/7_player_laser.png" type="Texture" id=26]
+[ext_resource path="res://assets/Images/player_laser/8_player_laser.png" type="Texture" id=27]
+[ext_resource path="res://assets/Images/player_laser/9_player_laser.png" type="Texture" id=28]
+[ext_resource path="res://assets/Images/player_laser/10_player_laser.png" type="Texture" id=29]
+[ext_resource path="res://assets/Images/player_laser/11_player_laser.png" type="Texture" id=30]
+[ext_resource path="res://assets/Images/player_laser/12_player_laser.png" type="Texture" id=31]
+[ext_resource path="res://assets/Images/player_laser/13_player_laser.png" type="Texture" id=32]
+[ext_resource path="res://assets/Images/player_laser/14_player_laser.png" type="Texture" id=33]
+[ext_resource path="res://assets/Images/player_laser/15_player_laser.png" type="Texture" id=34]
+[ext_resource path="res://assets/Images/player_laser/16_player_laser.png" type="Texture" id=35]
+[ext_resource path="res://assets/Images/player_laser/17_player_laser.png" type="Texture" id=36]
 
 [sub_resource type="Animation" id=1]
+
+resource_name = "combo"
+length = 1.2
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("laser:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.45, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 2, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
 
 length = 0.6
 loop = false
@@ -48,14 +94,14 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
 shader = ExtResource( 2 )
 shader_param/x = true
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
@@ -64,10 +110,19 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=5]
 
 render_priority = 0
 shader = ExtResource( 14 )
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="ship" type="Area2D"]
 
@@ -94,7 +149,8 @@ __meta__ = {
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/explosion = SubResource( 1 )
+anims/combo = SubResource( 1 )
+anims/explosion = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -112,12 +168,13 @@ __meta__ = {
 
 [node name="frames" type="AnimatedSprite" parent="."]
 
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( -2.79742, 8.92931 )
 rotation = -1.5708
 scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 3 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Material", "Visibility" ]
 __meta__ = {
@@ -136,14 +193,14 @@ __meta__ = {
 visible = false
 position = Vector2( -7.32651, 2.785 )
 scale = Vector2( 0.281573, 0.281573 )
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "default"
 frame = 9
 
 [node name="shader" type="Sprite" parent="."]
 
 visible = false
-material = SubResource( 4 )
+material = SubResource( 5 )
 position = Vector2( -4.94492, 6.8206 )
 rotation = -1.5708
 z = -1
@@ -210,6 +267,17 @@ script = ExtResource( 19 )
 [node name="right" type="Position2D" parent="joystick"]
 
 position = Vector2( 1.68619, -55.3027 )
+
+[node name="laser" type="AnimatedSprite" parent="."]
+
+position = Vector2( 15.6723, -666.175 )
+rotation = -1.5708
+frames = SubResource( 6 )
+animation = "default"
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_finished"]
 
